@@ -1,0 +1,2 @@
+# sofware
+tarea de cocomo
