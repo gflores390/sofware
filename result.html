@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>RESULTADO</title>
+    <style>
+        /* Fondo animado con tonos lilas */
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #6a11cb, #b993d6, #8e44ad);
+            background-size: 300% 300%;
+            animation: gradientAnimation 10s ease infinite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Contenedor del formulario */
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        label {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        .form-control {
+            border: none;
+            border-radius: 10px;
+            padding: 10px;
+            font-size: 1rem;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            box-shadow: 0px 4px 12px rgba(128, 0, 128, 0.6);
+        }
+
+        .btn {
+            font-size: 1.2rem;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 50px;
+            background: linear-gradient(to right, #8e44ad, #6a11cb);
+            border: none;
+            color: white;
+            text-transform: uppercase;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+            box-shadow: 0px 8px 15px rgba(138, 43, 226, 0.3);
+        }
+
+        .btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0px 10px 20px rgba(138, 43, 226, 0.5);
+            background: linear-gradient(to right, #6a11cb, #8e44ad);
+        }
+         /* Partículas de fondo */
+         .particle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: moveParticles 7s infinite;
+        }
+
+        @keyframes moveParticles {
+            0% {
+                transform: translateY(0);
+                opacity: 0.7;
+            }
+            50% {
+                transform: translateY(-30px);
+                opacity: 0.4;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 0.7;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Fondo animado -->
+    <div class="particles-container"></div>
+    
+    <div class="container text-center">
+        <h1>RESULTADO</h1>
+        <div id="result-container" class="table-responsive mt-4">
+            <table class="table table-bordered" id="result-table">
+                <tbody id="result">
+                    <!-- Los resultados se llenarán aquí -->
+                </tbody>
+            </table>
+        </div>
+        <button class="btn btn-secondary mt-4" onclick="goBack()">Volver</button>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        // Crear partículas de fondo
+        const particlesContainer = document.querySelector('.particles-container');
+
+        function createParticle() {
+            const particle = document.createElement('div');
+            const size = Math.random() * 20 + 10; // Tamaño de partículas
+            particle.classList.add('particle');
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            particle.style.background = `rgba(255, 255, 255, ${Math.random() * 0.5 + 0.2})`;
+            particle.style.top = `${Math.random() * window.innerHeight}px`;
+            particle.style.left = `${Math.random() * window.innerWidth}px`;
+            particle.style.animationDuration = `${Math.random() * 5 + 3}s`; // Velocidad de movimiento
+            particlesContainer.appendChild(particle);
+
+            setTimeout(() => {
+                particlesContainer.removeChild(particle);
+            }, 8000);
+        }
+
+        function generateParticles() {
+            setInterval(createParticle, 200); // Frecuencia de generación
+        }
+
+        generateParticles();
+
+        // Redirigir al formulario al hacer clic en el botón
+        function goToForm() {
+            window.location.href = "second.html"; // Cambia "formulario.html" por la URL de tu formulario
+        }
+    </script>
+</body>
+</html>

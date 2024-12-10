@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Bienvenido</title>
+    <style>
+        /* Fondo animado con degradado */
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            height: 100vh;
+            background: linear-gradient(135deg, #4facfe, #6a11cb, #b993d6);
+            background-size: 400% 400%;
+            animation: gradientAnimation 10s ease infinite;
+            display: flex; /* Flexbox para centrar */
+            justify-content: center; /* Centrar horizontalmente */
+            align-items: center; /* Centrar verticalmente */
+            color: #fff;
+            text-align: center;
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Contenido */
+        .content {
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 30px;
+            color: #fff;
+            text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        p {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-top: 20px;
+            color: rgba(255, 255, 255, 0.8);
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Botón animado */
+        button {
+            font-size: 1.5rem;
+            padding: 15px 40px;
+            color: #fff;
+            background: linear-gradient(to right, #ff7eb3, #ff758c);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0px 8px 20px rgba(255, 118, 137, 0.4);
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        button:hover {
+            transform: scale(1.15) translateY(-5px);
+            box-shadow: 0px 12px 30px rgba(255, 118, 137, 0.6);
+            background: linear-gradient(to right, #ff758c, #ff7eb3);
+        }
+
+        /* Partículas de fondo */
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: moveParticles 7s infinite;
+        }
+
+        @keyframes moveParticles {
+            0% {
+                transform: translateY(0);
+                opacity: 0.7;
+            }
+            50% {
+                transform: translateY(-30px);
+                opacity: 0.4;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 0.7;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Fondo animado -->
+    <div class="particles-container"></div>
+
+    <!-- Contenido principal -->
+    <div class="content">
+        <h1>Bienvenido a la SISTEMA </h1>
+        <h2>ESTIMACION DE COCOMO</h2>
+        <button class="btn mt-3" onclick="goToForm()">CALCULAR</button>
+        <p>NOMBRE: GUADALUPE FLORES MAMANI</p>
+        <p>CI : 9225528</p>
+        <P>RU : 200038929</P>
+    </div>
+
+    <script>
+        // Crear partículas de fondo
+        const particlesContainer = document.querySelector('.particles-container');
+
+        function createParticle() {
+            const particle = document.createElement('div');
+            const size = Math.random() * 20 + 10; // Tamaño de partículas
+            particle.classList.add('particle');
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            particle.style.background = `rgba(255, 255, 255, ${Math.random() * 0.5 + 0.2})`;
+            particle.style.top = `${Math.random() * window.innerHeight}px`;
+            particle.style.left = `${Math.random() * window.innerWidth}px`;
+            particle.style.animationDuration = `${Math.random() * 5 + 3}s`; // Velocidad de movimiento
+            particlesContainer.appendChild(particle);
+
+            setTimeout(() => {
+                particlesContainer.removeChild(particle);
+            }, 8000);
+        }
+
+        function generateParticles() {
+            setInterval(createParticle, 200); // Frecuencia de generación
+        }
+
+        generateParticles();
+
+        // Redirigir al formulario al hacer clic en el botón
+        function goToForm() {
+            window.location.href = "second.html"; // Cambia "formulario.html" por la URL de tu formulario
+        }
+    </script>
+</body>
+</html>
